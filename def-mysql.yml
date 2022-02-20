@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+   name: mysql-pod
+   labels: 
+      author: David
+      type: mydb
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: mydb
+  template:
+    metadata:
+       name: mysql-pod
+       labels:
+           type: mydb
+    spec: 
+      containers:
+         - name: mysql-con
+           image: mysql:latest
+           ports:
+            - containerPort: 3306
+              hostPort: 8080  
+           env: 
+            - name:  MYSQL_ROOT_PASSWORD
+              value: david
+...                
+  

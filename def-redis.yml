@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-pod
+  labels:
+    author: david
+    type: cache
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: cache
+  template:
+    metadata:
+      name: redis-pods
+      labels:
+        type: cache
+    spec:
+      containers:
+        - name: redis-con
+          image: redis:latest
+...

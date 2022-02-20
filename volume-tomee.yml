@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+    name: my-tomee
+    labels:
+      author: david
+      type: webserver
+spec: 
+  containers:
+    - name: tomee-container
+      image: tomee  
+      volumeMounts: 
+        - name: tomee-volume
+          mountPath: /data
+  volumes:
+    - name: tomee-volume
+      emptyDir: {}
+      
